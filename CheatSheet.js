@@ -91,3 +91,15 @@ style: {fontSize:Math.round(largeFont-((i/amfin) * (largeFont-smallFont)))},
 })
 text[i].adjustToFit()
 }
+
+
+// Write to files
+
+var writeTextToFile = function(text, path) {
+    var t = [NSString stringWithFormat:@"%@", text],
+    f = [NSString stringWithFormat:@"%@", filePath];
+    return [t writeToFile:f atomically:true encoding:NSUTF8StringEncoding error:nil];
+}
+writeTextToFile('Hello!', context.document.fileURL().path().substring(0, context.document.fileURL().path().lastIndexOf("/") + 1)+"myFile.js")
+
+
