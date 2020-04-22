@@ -1,0 +1,28 @@
+var onRun = function(context) {
+let sketch = require('sketch');
+let document = sketch.getSelectedDocument();
+var selectedLayers = document.selectedLayers;
+var prevx;  
+var prevy;     
+var oldLayer;
+selectedLayers.forEach(function (layer, i) {
+
+ prevx = layer.frame.x;          
+ prevy = layer.frame.y;  
+ oldLayer =   layer;   
+});
+
+ [NSApp sendAction:'paste:' to:nil from:document];
+
+var newdoc = sketch.getSelectedDocument()
+var newselectedLayers = newdoc.selectedLayers
+
+newselectedLayers.forEach(function (layer, i) {
+    
+layer.frame.x =  prevx
+layer.frame.y =  prevy    
+ 
+}); 
+oldLayer.remove();
+          };
+          
